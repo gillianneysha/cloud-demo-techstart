@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dough</title>
+<meta name="description" content="Small-batch baking recipes, tested until they're boring to get right, then written down clearly.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#2A1B14" stroke-width="1.4"/>
+        <path d="M20 10c-2 3-2 5 0 7 2-2 2-4 0-7Z" fill="#B23A2E"/>
+        <path d="M13 26c2-5 5-7 7-7s5 2 7 7" stroke="#2A1B14" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="20" cy="19" r="1.4" fill="#2A1B14"/>
+      </svg>
+      Second Rise
+      <small style="margin-left:2px">— since 2019</small>
+    </a>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="nav-links">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap" style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px; align-items:center;">
+      <div>
+        <span class="eyebrow">Baked in a small kitchen, tested in yours</span>
+        <h1>Recipes that<br>rise to the <em>occasion.</em></h1>
+        <p class="lede">Second Rise is a collection of doughs, batters and crumbs, tested until the instructions are boring to get right — so the results never are.</p>
+        <div class="hero-actions">
+          <a href="recipes.html" class="btn btn-solid">Browse recipes <span class="btn-arrow">→</span></a>
+          <a href="about.html" class="btn">Our story</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span class="eyebrow" style="font-size:11px;">This week's bake</span>
+            <svg class="stamp" width="46" height="46" viewBox="0 0 46 46" fill="none">
+              <circle cx="23" cy="23" r="21" stroke="#B23A2E" stroke-width="1"/>
+              <path id="stampCirclePath" d="M23,23 m-16,0 a16,16 0 1,1 32,0 a16,16 0 1,1 -32,0" fill="none"/>
+              <text font-family="IBM Plex Mono" font-size="4.6" fill="#B23A2E" letter-spacing="1.5">
+                <textPath href="#stampCirclePath" startOffset="0%">SECOND RISE • BAKED FRESH • </textPath>
+              </text>
+              <path d="M23 20c-1.4 2-1.4 3.4 0 4.8 1.4-1.4 1.4-2.8 0-4.8Z" fill="#B23A2E"/>
+            </svg>
+          </div>
+          <div>
+            <div class="hero-card-title">Brown Butter<br>Chocolate Chip Cookies</div>
+            <div class="hero-card-meta">
+              <span>⏱ 35 min</span>
+              <span>🔥 190°C</span>
+              <span>◎ Makes 18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="tear-wrap wrap"><hr class="tear-line"></div>
+  <div class="stats-row">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0;">
+      <div class="stat">
+        <div class="num">86</div>
+        <div class="label">Recipes tested & retested</div>
+      </div>
+      <div class="stat">
+        <div class="num">4×</div>
+        <div class="label">Minimum batches before publishing</div>
+      </div>
+      <div class="stat">
+        <div class="num">0g</div>
+        <div class="label">Vague quantities like "a handful"</div>
+      </div>
+    </div>
+  </div>
+  <div class="tear-wrap wrap"><hr class="tear-line"></div>
+
+  <!-- PHILOSOPHY -->
+  <section>
+    <div class="wrap philosophy">
+      <div>
+        <span class="eyebrow">How we write a recipe</span>
+        <h2 style="font-size: clamp(28px,3.2vw,38px); margin-top:16px;">Precision first,<br>so you can improvise second.</h2>
+      </div>
+      <div class="philosophy-list">
+        <div class="philosophy-item">
+          <span class="mark">01</span>
+          <div>
+            <h4>Weighed, not scooped</h4>
+            <p>Every recipe is written in grams first, with cups alongside for convenience. A cup of flour can vary by 20% depending on how it's packed — that's the difference between a biscuit and a brick.</p>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <span class="mark">02</span>
+          <div>
+            <h4>Tested on ordinary ovens</h4>
+            <p>No convection assumptions, no professional deck ovens. If a recipe calls for 190°C, we baked it in a normal home oven with a hot spot and a squeaky door to prove it.</p>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <span class="mark">03</span>
+          <div>
+            <h4>Told to you straight</h4>
+            <p>"Bake until golden" means nothing. We tell you the minute, the smell, and the sound to listen for, so you're never guessing at the last five minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED RECIPES -->
+  <section class="tight" style="background:var(--parchment-dark);">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">From the notebook</span>
+          <h2 style="margin-top:14px;">Three to start with</h2>
+        </div>
+        <a href="recipes.html" class="btn">See all recipes <span class="btn-arrow">→</span></a>
+      </div>
+
+      <div class="card-grid">
+
+        <a href="recipes.html" class="recipe-card">
+          <div class="recipe-card-media">
+            <svg viewBox="0 0 300 168" preserveAspectRatio="none"><circle cx="60" cy="120" r="34" fill="rgba(42,27,20,0.12)"/><circle cx="130" cy="60" r="20" fill="rgba(42,27,20,0.1)"/><circle cx="230" cy="130" r="46" fill="rgba(42,27,20,0.08)"/></svg>
+            <span class="recipe-card-tag">Cookies</span>
+          </div>
+          <div class="recipe-card-body">
+            <h3>Brown Butter Chocolate Chip Cookies</h3>
+            <p>Nutty brown butter, two kinds of sugar, a 24-hour rest for deeper flavor.</p>
+            <div class="recipe-card-meta">
+              <span>⏱ 35 min</span><span>◎ Makes 18</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="recipes.html" class="recipe-card">
+          <div class="recipe-card-media">
+            <svg viewBox="0 0 300 168" preserveAspectRatio="none"><rect x="40" y="40" width="220" height="90" rx="10" fill="rgba(42,27,20,0.1)"/><rect x="60" y="60" width="180" height="8" rx="4" fill="rgba(42,27,20,0.14)"/></svg>
+            <span class="recipe-card-tag">Bread</span>
+          </div>
+          <div class="recipe-card-body">
+            <h3>Sourdough Country Loaf</h3>
+            <p>An open, airy crumb and a crackling crust — built over two slow days.</p>
+            <div class="recipe-card-meta">
+              <span>⏱ 48 hr</span><span>◎ 1 loaf</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="recipes.html" class="recipe-card">
+          <div class="recipe-card-media">
+            <svg viewBox="0 0 300 168" preserveAspectRatio="none"><path d="M0 140 Q75 90 150 140 T300 140 V168 H0 Z" fill="rgba(42,27,20,0.1)"/><circle cx="220" cy="60" r="26" fill="rgba(42,27,20,0.1)"/></svg>
+            <span class="recipe-card-tag">Cake</span>
+          </div>
+          <div class="recipe-card-body">
+            <h3>Lemon Olive Oil Cake</h3>
+            <p>Moist, fine-crumbed, and unapologetically citrus-forward — no frosting needed.</p>
+            <div class="recipe-card-meta">
+              <span>⏱ 1 hr</span><span>◎ Serves 10</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>Get a new recipe in your inbox every other Sunday.</h2>
+        <a href="about.html#newsletter" class="btn btn-solid">Sign up <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:var(--parchment); margin-bottom:14px;">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" stroke="#F1E7D4" stroke-width="1.4"/>
+            <path d="M20 10c-2 3-2 5 0 7 2-2 2-4 0-7Z" fill="#E7B44C"/>
+            <path d="M13 26c2-5 5-7 7-7s5 2 7 7" stroke="#F1E7D4" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          Second Rise
+        </div>
+        <p style="max-width:34ch;">Small-batch baking recipes, tested until the instructions are boring to get right.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+          <li><a href="about.html#newsletter">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dough Kitchen</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
