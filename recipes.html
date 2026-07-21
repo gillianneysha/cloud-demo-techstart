@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipes — Second Rise</title>
+<meta name="description" content="Six tested baking recipes with weighed ingredients and clear method steps.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#2A1B14" stroke-width="1.4"/>
+        <path d="M20 10c-2 3-2 5 0 7 2-2 2-4 0-7Z" fill="#B23A2E"/>
+        <path d="M13 26c2-5 5-7 7-7s5 2 7 7" stroke="#2A1B14" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="20" cy="19" r="1.4" fill="#2A1B14"/>
+      </svg>
+      Second Rise
+      <small style="margin-left:2px">— since 2019</small>
+    </a>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="recipes.html" aria-current="page">Recipes</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">The notebook</span>
+      <h1>Six recipes,<br>fully weighed out.</h1>
+      <p class="lede">Tap any recipe to open the full ingredient list and method. Check ingredients off as you go — they'll reset next time you visit.</p>
+
+      <div class="filter-row">
+        <button class="filter-pill active" data-tag="all">All</button>
+        <button class="filter-pill" data-tag="cookies">Cookies</button>
+        <button class="filter-pill" data-tag="bread">Bread</button>
+        <button class="filter-pill" data-tag="pastry">Pastry</button>
+        <button class="filter-pill" data-tag="cake">Cake</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="recipe-index">
+
+        <!-- 1: Brown Butter Chocolate Chip Cookies -->
+        <div class="recipe-entry" data-tags="cookies">
+          <button class="recipe-entry-head" aria-expanded="false">
+            <span class="recipe-entry-num">01</span>
+            <span class="recipe-entry-title">
+              <h3>Brown Butter Chocolate Chip Cookies</h3>
+              <span class="sub">Nutty, chewy-centered, crisp at the edge</span>
+            </span>
+            <span class="recipe-entry-meta">
+              <span>⏱ 35 min + 24 hr rest</span>
+              <span>🔥 190°C</span>
+              <span>◎ Makes 18</span>
+            </span>
+            <span class="recipe-entry-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <div class="recipe-entry-body">
+            <div class="recipe-entry-body-inner">
+              <div class="recipe-detail">
+                <div class="ingredients">
+                  <h4>Ingredients</h4>
+                  <ul>
+                    <li><input type="checkbox"><span class="qty">227g</span><span>unsalted butter</span></li>
+                    <li><input type="checkbox"><span class="qty">300g</span><span>light brown sugar</span></li>
+                    <li><input type="checkbox"><span class="qty">100g</span><span>granulated sugar</span></li>
+                    <li><input type="checkbox"><span class="qty">2</span><span>large eggs, room temp</span></li>
+                    <li><input type="checkbox"><span class="qty">2 tsp</span><span>vanilla extract</span></li>
+                    <li><input type="checkbox"><span class="qty">375g</span><span>all-purpose flour</span></li>
+                    <li><input type="checkbox"><span class="qty">1 tsp</span><span>baking soda</span></li>
+                    <li><input type="checkbox"><span class="qty">1¼ tsp</span><span>fine salt</span></li>
+                    <li><input type="checkbox"><span class="qty">280g</span><span>dark chocolate, chopped</span></li>
+                    <li><input type="checkbox"><span class="qty">1 tsp</span><span>flaky salt, to finish</span></li>
+                  </ul>
+                </div>
+                <div class="method">
+                  <h4>Method</h4>
+                  <ol>
+                    <li>Brown the butter in a light-colored pan over medium heat, swirling often, until it smells nutty and the solids turn amber, about 6 minutes. Pour into a bowl to cool for 15 minutes.</li>
+                    <li>Whisk the browned butter with both sugars until glossy. Add eggs and vanilla; whisk until pale and slightly thickened, about 1 minute.</li>
+                    <li>Fold in flour, baking soda and salt just until no dry streaks remain. Fold in the chocolate.</li>
+                    <li><strong>Rest the dough</strong>, covered, in the fridge for at least 24 hours — this is what deepens the flavor. It'll keep up to 3 days.</li>
+                    <li>Scoop 65g balls onto a lined tray, spaced well apart. Sprinkle with flaky salt.</li>
+                    <li>Bake at 190°C for 11–13 minutes, until the edges are set but the centers still look slightly underdone. Cool on the tray for 10 minutes before moving.</li>
+                  </ol>
+                </div>
+                <div class="recipe-note"><strong>Note:</strong> Skipping the rest still works, but the flavor will taste flatter and the cookies will spread more.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2: Sourdough Country Loaf -->
+        <div class="recipe-entry" data-tags="bread">
+          <button class="recipe-entry-head" aria-expanded="false">
+            <span class="recipe-entry-num">02</span>
+            <span class="recipe-entry-title">
+              <h3>Sourdough Country Loaf</h3>
+              <span class="sub">Open crumb, crackling crust, two slow days</span>
+            </span>
+            <span class="recipe-entry-meta">
+              <span>⏱ 48 hr</span>
+              <span>🔥 240°C</span>
+              <span>◎ 1 loaf</span>
+            </span>
+            <span class="recipe-entry-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <div class="recipe-entry-body">
+            <div class="recipe-entry-body-inner">
+              <div class="recipe-detail">
+                <div class="ingredients">
+                  <h4>Ingredients</h4>
+                  <ul>
+                    <li><input type="checkbox"><span class="qty">100g</span><span>active sourdough starter</span></li>
+                    <li><input type="checkbox"><span class="qty">375g</span><span>water, room temp</span></li>
+                    <li><input type="checkbox"><span class="qty">500g</span><span>bread flour</span></li>
+                    <li><input type="checkbox"><span class="qty">10g</span><span>fine sea salt</span></li>
+                    <li><input type="checkbox"><span class="qty">—</span><span>rice flour, for the banneton</span></li>
+                  </ul>
+                </div>
+                <div class="method">
+                  <h4>Method</h4>
+                  <ol>
+                    <li>Mix starter and water until dissolved, then add flour. Mix until no dry patches remain and rest 30 minutes (autolyse).</li>
+                    <li>Sprinkle in the salt and squeeze it through the dough. Rest 30 minutes.</li>
+                    <li>Bulk ferment 4–5 hours at room temperature, performing a set of stretch-and-folds every 30 minutes for the first 2 hours. The dough should grow by about half and feel airy.</li>
+                    <li>Shape into a tight round, place seam-up in a floured banneton, cover, and refrigerate 12–18 hours.</li>
+                    <li>Heat a Dutch oven at 240°C for 45 minutes. Turn the loaf out onto parchment, score with one confident slash, and lower into the pot.</li>
+                    <li>Bake covered for 20 minutes, then uncovered for 22–25 minutes more, until deeply browned. Cool at least 1 hour before slicing.</li>
+                  </ol>
+                </div>
+                <div class="recipe-note"><strong>Note:</strong> No banneton? A flour-dusted bowl lined with a clean tea towel works just as well.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3: Cinnamon Morning Buns -->
+        <div class="recipe-entry" data-tags="pastry">
+          <button class="recipe-entry-head" aria-expanded="false">
+            <span class="recipe-entry-num">03</span>
+            <span class="recipe-entry-title">
+              <h3>Cinnamon Morning Buns</h3>
+              <span class="sub">Laminated, sticky-topped, worth the fold</span>
+            </span>
+            <span class="recipe-entry-meta">
+              <span>⏱ 3 hr</span>
+              <span>🔥 200°C</span>
+              <span>◎ Makes 12</span>
+            </span>
+            <span class="recipe-entry-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <div class="recipe-entry-body">
+            <div class="recipe-entry-body-inner">
+              <div class="recipe-detail">
+                <div class="ingredients">
+                  <h4>Ingredients</h4>
+                  <ul>
+                    <li><input type="checkbox"><span class="qty">500g</span><span>store-bought or homemade laminated dough</span></li>
+                    <li><input type="checkbox"><span class="qty">120g</span><span>unsalted butter, softened</span></li>
+                    <li><input type="checkbox"><span class="qty">150g</span><span>brown sugar</span></li>
+                    <li><input type="checkbox"><span class="qty">2 tbsp</span><span>ground cinnamon</span></li>
+                    <li><input type="checkbox"><span class="qty">120g</span><span>granulated sugar, for the pans</span></li>
+                    <li><input type="checkbox"><span class="qty">1</span><span>egg, beaten, for wash</span></li>
+                  </ul>
+                </div>
+                <div class="method">
+                  <h4>Method</h4>
+                  <ol>
+                    <li>Roll the dough into a rectangle roughly 40 × 60cm. Spread evenly with softened butter.</li>
+                    <li>Mix brown sugar and cinnamon; scatter over the buttered dough in an even layer.</li>
+                    <li>Roll tightly from the long edge into a log. Slice into 12 rounds and place cut-side up into sugar-coated muffin tins.</li>
+                    <li>Cover and proof in a warm spot for 1½–2 hours, until visibly puffed.</li>
+                    <li>Brush with egg wash and bake at 200°C for 22–25 minutes, until deeply golden.</li>
+                    <li>Invert onto a tray immediately while hot, so the caramelized sugar releases from the tin.</li>
+                  </ol>
+                </div>
+                <div class="recipe-note"><strong>Note:</strong> Work fast when rolling — the butter should stay cold and streaky, not melt into the dough.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4: Lemon Olive Oil Cake -->
+        <div class="recipe-entry" data-tags="cake">
+          <button class="recipe-entry-head" aria-expanded="false">
+            <span class="recipe-entry-num">04</span>
+            <span class="recipe-entry-title">
+              <h3>Lemon Olive Oil Cake</h3>
+              <span class="sub">Moist, fine-crumbed, no frosting needed</span>
+            </span>
+            <span class="recipe-entry-meta">
+              <span>⏱ 1 hr</span>
+              <span>🔥 175°C</span>
+              <span>◎ Serves 10</span>
+            </span>
+            <span class="recipe-entry-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <div class="recipe-entry-body">
+            <div class="recipe-entry-body-inner">
+              <div class="recipe-detail">
+                <div class="ingredients">
+                  <h4>Ingredients</h4>
+                  <ul>
+                    <li><input type="checkbox"><span class="qty">280g</span><span>all-purpose flour</span></li>
+                    <li><input type="checkbox"><span class="qty">1½ tsp</span><span>baking powder</span></li>
+                    <li><input type="checkbox"><span class="qty">½ tsp</span><span>baking soda</span></li>
+                    <li><input type="checkbox"><span class="qty">¾ tsp</span><span>fine salt</span></li>
+                    <li><input type="checkbox"><span class="qty">3</span><span>large eggs</span></li>
+                    <li><input type="checkbox"><span class="qty">300g</span><span>granulated sugar</span></li>
+                    <li><input type="checkbox"><span class="qty">2 tbsp</span><span>lemon zest (about 3 lemons)</span></li>
+                    <li><input type="checkbox"><span class="qty">240ml</span><span>extra-virgin olive oil</span></li>
+                    <li><input type="checkbox"><span class="qty">240ml</span><span>whole milk</span></li>
+                    <li><input type="checkbox"><span class="qty">3 tbsp</span><span>fresh lemon juice</span></li>
+                  </ul>
+                </div>
+                <div class="method">
+                  <h4>Method</h4>
+                  <ol>
+                    <li>Whisk flour, baking powder, baking soda and salt together; set aside.</li>
+                    <li>Rub lemon zest into the sugar with your fingertips until fragrant. Whisk in eggs until pale and thick, about 2 minutes.</li>
+                    <li>Slowly whisk in the olive oil, then the milk and lemon juice.</li>
+                    <li>Fold the dry ingredients into the wet in three additions, mixing just until combined.</li>
+                    <li>Pour into a greased 23cm round pan and bake at 175°C for 45–50 minutes, until a skewer comes out clean.</li>
+                    <li>Cool in the pan 15 minutes, then turn out onto a rack to cool fully before slicing.</li>
+                  </ol>
+                </div>
+                <div class="recipe-note"><strong>Note:</strong> Use a fruity, mild olive oil — a bitter or peppery one will fight the lemon.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5: Buttermilk Biscuits -->
+        <div class="recipe-entry" data-tags="bread">
+          <button class="recipe-entry-head" aria-expanded="false">
+            <span class="recipe-entry-num">05</span>
+            <span class="recipe-entry-title">
+              <h3>Buttermilk Biscuits</h3>
+              <span class="sub">Tall, flaky layers, ready in half an hour</span>
+            </span>
+            <span class="recipe-entry-meta">
+              <span>⏱ 30 min</span>
+              <span>🔥 220°C</span>
+              <span>◎ Makes 10</span>
+            </span>
+            <span class="recipe-entry-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <div class="recipe-entry-body">
+            <div class="recipe-entry-body-inner">
+              <div class="recipe-detail">
+                <div class="ingredients">
+                  <h4>Ingredients</h4>
+                  <ul>
+                    <li><input type="checkbox"><span class="qty">375g</span><span>all-purpose flour</span></li>
+                    <li><input type="checkbox"><span class="qty">2 tbsp</span><span>baking powder</span></li>
+                    <li><input type="checkbox"><span class="qty">1 tsp</span><span>fine salt</span></li>
+                    <li><input type="checkbox"><span class="qty">1 tbsp</span><span>granulated sugar</span></li>
+                    <li><input type="checkbox"><span class="qty">170g</span><span>cold unsalted butter, cubed</span></li>
+                    <li><input type="checkbox"><span class="qty">280ml</span><span>cold buttermilk</span></li>
+                    <li><input type="checkbox"><span class="qty">2 tbsp</span><span>melted butter, to finish</span></li>
+                  </ul>
+                </div>
+                <div class="method">
+                  <h4>Method</h4>
+                  <ol>
+                    <li>Whisk flour, baking powder, salt and sugar together. Scatter in cold butter and rub or cut it in until pea-sized pieces remain.</li>
+                    <li>Pour in buttermilk and stir with a fork just until a shaggy dough forms.</li>
+                    <li>Turn out onto a floured surface. Pat into a rectangle, fold into thirds like a letter, and repeat twice more to build layers.</li>
+                    <li>Pat to 2.5cm thick and cut rounds with a sharp cutter, pressing straight down without twisting.</li>
+                    <li>Place close together on a tray so they rise upward. Bake at 220°C for 14–16 minutes, until tall and golden.</li>
+                    <li>Brush with melted butter as soon as they come out of the oven.</li>
+                  </ol>
+                </div>
+                <div class="recipe-note"><strong>Note:</strong> Keep everything cold — chill the flour and cut the butter straight from the fridge for the flakiest layers.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6: Cardamom Buns -->
+        <div class="recipe-entry" data-tags="pastry">
+          <button class="recipe-entry-head" aria-expanded="false">
+            <span class="recipe-entry-num">06</span>
+            <span class="recipe-entry-title">
+              <h3>Cardamom Buns</h3>
+              <span class="sub">Swedish-style, knotted, fragrant with spice</span>
+            </span>
+            <span class="recipe-entry-meta">
+              <span>⏱ 2.5 hr</span>
+              <span>🔥 210°C</span>
+              <span>◎ Makes 16</span>
+            </span>
+            <span class="recipe-entry-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2A1B14" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <div class="recipe-entry-body">
+            <div class="recipe-entry-body-inner">
+              <div class="recipe-detail">
+                <div class="ingredients">
+                  <h4>Ingredients</h4>
+                  <ul>
+                    <li><input type="checkbox"><span class="qty">250ml</span><span>whole milk, warm</span></li>
+                    <li><input type="checkbox"><span class="qty">7g</span><span>instant yeast</span></li>
+                    <li><input type="checkbox"><span class="qty">500g</span><span>all-purpose flour</span></li>
+                    <li><input type="checkbox"><span class="qty">70g</span><span>granulated sugar</span></li>
+                    <li><input type="checkbox"><span class="qty">1½ tsp</span><span>ground cardamom</span></li>
+                    <li><input type="checkbox"><span class="qty">½ tsp</span><span>fine salt</span></li>
+                    <li><input type="checkbox"><span class="qty">75g</span><span>unsalted butter, softened</span></li>
+                    <li><input type="checkbox"><span class="qty">100g</span><span>butter, softened, for filling</span></li>
+                    <li><input type="checkbox"><span class="qty">80g</span><span>sugar, for filling</span></li>
+                    <li><input type="checkbox"><span class="qty">1½ tsp</span><span>cardamom, for filling</span></li>
+                    <li><input type="checkbox"><span class="qty">—</span><span>pearl sugar, to finish</span></li>
+                  </ul>
+                </div>
+                <div class="method">
+                  <h4>Method</h4>
+                  <ol>
+                    <li>Warm milk to lukewarm and stir in yeast. Combine with flour, sugar, cardamom and salt; mix to a shaggy dough.</li>
+                    <li>Knead in the softened butter in pieces until the dough is smooth and elastic, about 8 minutes. Cover and proof 1 hour, until doubled.</li>
+                    <li>Mix the filling butter with filling sugar and cardamom into a spreadable paste.</li>
+                    <li>Roll the dough into a large rectangle and spread with the filling. Fold into thirds, then slice into strips and twist each into a knot.</li>
+                    <li>Place knots on trays, cover, and proof 45 minutes until puffy. Brush with milk and press tops into pearl sugar.</li>
+                    <li>Bake at 210°C for 10–12 minutes, until deep golden brown.</li>
+                  </ol>
+                </div>
+                <div class="recipe-note"><strong>Note:</strong> Freshly ground cardamom pods make a noticeable difference over pre-ground — worth the extra step.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:var(--parchment); margin-bottom:14px;">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" stroke="#F1E7D4" stroke-width="1.4"/>
+            <path d="M20 10c-2 3-2 5 0 7 2-2 2-4 0-7Z" fill="#E7B44C"/>
+            <path d="M13 26c2-5 5-7 7-7s5 2 7 7" stroke="#F1E7D4" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          Second Rise
+        </div>
+        <p style="max-width:34ch;">Small-batch baking recipes, tested until the instructions are boring to get right.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+          <li><a href="about.html#newsletter">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Second Rise Kitchen</span>
+      <span>Flour on every keyboard</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
