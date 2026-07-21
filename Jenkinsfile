@@ -8,6 +8,9 @@ pipeline {
         timestamps()
         disableConcurrentBuilds()
     }
+    triggers {
+        githubPush()   // fires automatically when GitHub webhook notifies Jenkins of a push
+    }
     environment {
         // ---- AWS / EC2 (production) ----
         SERVERS = 'ubuntu@10.0.2.5 ubuntu@10.0.4.172'   // your two web servers
