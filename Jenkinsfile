@@ -1,123 +1,116 @@
-// GitHub push -> webhook -> Jenkins -> Azure staging (ACI/File Share) -> test -> AWS EC2 production
-// Requires two Jenkins credentials set up beforehand:
-//   1. 'priv-key'        (SSH Username with private key) - for AWS EC2 servers
-//   2. 'azure-sp-cred'   (Microsoft Azure Service Principal) - for Azure CLI login
 pipeline {
-    agent any
-    options {
-        timestamps()
-        disableConcurrentBuilds()
-    }
-    triggers {
-        githubPush()   // fires automatically when GitHub webhook notifies Jenkins of a push
-    }
-    environment {
-        // ---- AWS / EC2 (production) ----
-        SERVERS = 'ubuntu@10.0.2.5 ubuntu@10.0.4.172'   // your two web servers
-        DOCROOT = '/var/www/html'                        // Apache default doc root
-        APP_SRC = './'                                   // repo root; 'dist/' if you build
 
-        // ---- Azure / ACI (staging) ----
-        AZURE_STORAGE_ACCOUNT = 'yshastg'                // storage account name
-        AZURE_FILE_SHARE      = 'webcontent'             // file share name
-        ACI_FQDN              = 'yshalabel.centralindia.azurecontainer.io'  // ACI public FQDN
+    agent any
+
+    environment {
+        // Azure Storage
+        STORAGE_ACCOUNT = "yshastg"
+        FILE_SHARE = "webcontent"
+
+        // Staging (ACI)
+        ACI_URL = "http://yshalabel.centralindia.azurecontainer.io"
+
+        // Production EC2 Private IPs
+        WEB1 = "10.0.2.5"
+        WEB2 = "10.0.4.186"
+
+        REMOTE_DIR = "/var/www/html"
     }
+
     stages {
 
         stage('Checkout') {
-            steps { checkout scm }
-        }
-
-        stage('Build') {
             steps {
-                sh 'echo "No build step — deploying repo as-is."'
+                checkout scm
             }
         }
 
-        stage('Deploy to Staging (Azure)') {
+        stage('Deploy to Azure Staging') {
             steps {
-                withCredentials([azureServicePrincipal(
-                    credentialsId: 'azure-sp-cred',
-                    subscriptionIdVariable: 'AZURE_SUBSCRIPTION_ID',
-                    clientIdVariable: 'AZURE_CLIENT_ID',
-                    clientSecretVariable: 'AZURE_CLIENT_SECRET',
-                    tenantIdVariable: 'AZURE_TENANT_ID'
-                )]) {
+                withCredentials([
+                    string(credentialsId: 'azure-storage-key', variable: 'STORAGE_KEY')
+                ]) {
                     sh '''
-                        set -eu
-                        az login --service-principal \
-                            -u "$AZURE_CLIENT_ID" \
-                            -p "$AZURE_CLIENT_SECRET" \
-                            --tenant "$AZURE_TENANT_ID" > /dev/null
-                        az account set --subscription "$AZURE_SUBSCRIPTION_ID"
+                        echo "Uploading files to Azure File Share..."
 
-                        echo "=== Preparing clean deploy folder (excluding .git, Jenkinsfile) ==="
-                        rm -rf /tmp/deploy_src
-                        mkdir -p /tmp/deploy_src
-                        rsync -a --exclude '.git' --exclude 'Jenkinsfile' "${APP_SRC}" /tmp/deploy_src/
-
-                        echo "=== Uploading app files to Azure File Share: ${AZURE_FILE_SHARE} ==="
-                        set +e
-                        UPLOAD_OUTPUT=$(az storage file upload-batch \
-                            --destination "${AZURE_FILE_SHARE}" \
-                            --source "/tmp/deploy_src" \
-                            --account-name "${AZURE_STORAGE_ACCOUNT}" \
-                            --auth-mode login \
-                            --pattern "*" 2>&1)
-                        UPLOAD_STATUS=$?
-                        set -e
-
-                        echo "$UPLOAD_OUTPUT"
-
-                        if [ $UPLOAD_STATUS -ne 0 ]; then
-                            echo "FAIL: Azure upload failed (exit code $UPLOAD_STATUS)"
-                            exit 1
-                        fi
-
-                        echo "=== Staging deploy complete ==="
+                        az storage file upload-batch \
+                            --account-name $STORAGE_ACCOUNT \
+                            --account-key $STORAGE_KEY \
+                            --destination $FILE_SHARE \
+                            --source .
                     '''
                 }
             }
         }
 
-        stage('Test Staging') {
+        stage('Wait for ACI') {
+            steps {
+                echo "Waiting for Azure File Share changes to be reflected..."
+                sleep(time: 20, unit: 'SECONDS')
+            }
+        }
+
+        stage('HTTP Availability Test') {
             steps {
                 sh '''
-                    set -e
-                    echo "=== Checking staging endpoint: http://${ACI_FQDN} ==="
-                    STATUS=$(curl -s -o /tmp/staging_resp.html -w "%{http_code}" --max-time 15 "http://${ACI_FQDN}")
-                    echo "HTTP status: ${STATUS}"
+                    STATUS=$(curl -o /dev/null -s -w "%{http_code}" $ACI_URL)
 
                     if [ "$STATUS" != "200" ]; then
-                        echo "FAIL: Staging returned HTTP ${STATUS} instead of 200"
+                        echo "ERROR: ACI returned HTTP $STATUS"
                         exit 1
                     fi
 
-                    if ! grep -q "Welcome to my instance" /tmp/staging_resp.html; then
-                        echo "FAIL: Expected content not found on staging page"
-                        cat /tmp/staging_resp.html
-                        exit 1
-                    fi
-
-                    echo "PASS: Staging is up and serving expected content"
+                    echo "ACI is reachable."
                 '''
             }
         }
 
-        stage('Deploy to Production (AWS EC2)') {
+        stage('Content Assertion') {
             steps {
-                sshagent(credentials: ['priv-key']) {
+                sh '''
+                    PAGE=$(curl -s $ACI_URL)
+
+                    echo "$PAGE"
+
+                    # Change "Welcome" to text that exists on your homepage
+                    echo "$PAGE" | grep -q "LeBron James"
+
+                    echo "Content validation passed."
+                '''
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                sshagent(['priv-key']) {
                     sh '''
-                        set -eu
-                        SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-                        for HOST in ${SERVERS}; do
-                            echo "=== Deploying to ${HOST}:${DOCROOT} ==="
-                            rsync -az --delete -e "ssh ${SSH_OPTS}" --rsync-path="sudo rsync" \
-                                --exclude '.git' --exclude 'Jenkinsfile' \
-                                "${APP_SRC}" "${HOST}:${DOCROOT}/"
-                            ssh ${SSH_OPTS} "${HOST}" "sudo systemctl reload apache2"
-                            echo "=== ${HOST} updated ==="
-                        done
+                        echo "Deploying to Web Server 1..."
+
+                        rsync -avz --delete \
+                            --rsync-path="sudo rsync" \
+                            --exclude='.git' \
+                            --exclude='Jenkinsfile' \
+                            -e "ssh -o StrictHostKeyChecking=no" \
+                            ./ ubuntu@$WEB1:$REMOTE_DIR/
+
+                        ssh -o StrictHostKeyChecking=no ubuntu@$WEB1 "
+                            sudo chown -R www-data:www-data $REMOTE_DIR &&
+                            sudo systemctl restart apache2
+                        "
+
+                        echo "Deploying to Web Server 2..."
+
+                        rsync -avz --delete \
+                            --rsync-path="sudo rsync" \
+                            --exclude='.git' \
+                            --exclude='Jenkinsfile' \
+                            -e "ssh -o StrictHostKeyChecking=no" \
+                            ./ ubuntu@$WEB2:$REMOTE_DIR/
+
+                        ssh -o StrictHostKeyChecking=no ubuntu@$WEB2 "
+                            sudo chown -R www-data:www-data $REMOTE_DIR &&
+                            sudo systemctl restart apache2
+                        "
                     '''
                 }
             }
@@ -125,11 +118,17 @@ pipeline {
     }
 
     post {
+
         success {
-            echo 'Pipeline completed: staging tested and production updated.'
+            echo "Pipeline completed successfully."
         }
+
         failure {
-            echo 'Pipeline FAILED — production was NOT touched if failure occurred before the Deploy to Production stage.'
+            echo "Pipeline failed. Production deployment was skipped."
+        }
+
+        always {
+            cleanWs()
         }
     }
 }
